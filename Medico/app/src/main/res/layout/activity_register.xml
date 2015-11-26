@@ -32,7 +32,7 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/name_textfield" />
+                    android:id="@+id/fullname_textfield" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -56,7 +56,7 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/editText3" />
+                    android:id="@+id/username_textfield" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -70,7 +70,7 @@
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
                     android:ems="10"
-                    android:id="@+id/editText4" />
+                    android:id="@+id/password_textfield" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -84,7 +84,7 @@
                     android:layout_height="wrap_content"
                     android:inputType="textEmailAddress"
                     android:ems="10"
-                    android:id="@+id/editText5" />
+                    android:id="@+id/email_textfield" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -98,7 +98,7 @@
                     android:layout_height="wrap_content"
                     android:inputType="phone"
                     android:ems="10"
-                    android:id="@+id/editText"
+                    android:id="@+id/phone_textfield"
                     android:layout_gravity="center_horizontal" />
 
                 <LinearLayout
@@ -118,20 +118,25 @@
                             android:textAppearance="?android:attr/textAppearanceMedium"
                             android:text="Gender"
                             android:id="@+id/textView15" />
-
+                        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/gender_radiogroup"
+                            android:orientation="vertical">
                         <RadioButton
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Male"
-                            android:id="@+id/radioButton4"
-                            android:checked="false" />
+                            android:id="@+id/male_radio"
+                            android:checked="true" />
 
                         <RadioButton
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Female"
-                            android:id="@+id/radioButton3"
+                            android:id="@+id/female_radio"
                             android:checked="false" />
+                        </RadioGroup>
                     </LinearLayout>
 
                     <LinearLayout
@@ -145,20 +150,25 @@
                             android:textAppearance="?android:attr/textAppearanceMedium"
                             android:text="I am a "
                             android:id="@+id/textView14" />
-
+                        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:id="@+id/usertype_radiogroup">
                         <RadioButton
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Patient"
-                            android:id="@+id/radioButton5"
-                            android:checked="false" />
+                            android:id="@+id/patient_radio"
+                            android:checked="true" />
 
                         <RadioButton
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Doctor"
-                            android:id="@+id/radioButton6"
+                            android:id="@+id/doctor_radio"
                             android:checked="false" />
+                        </RadioGroup>
                     </LinearLayout>
 
                 </LinearLayout>
@@ -175,20 +185,20 @@
                     android:layout_height="wrap_content"
                     android:inputType="date"
                     android:ems="10"
-                    android:id="@+id/editText2" />
+                    android:id="@+id/dateofbirth_textfield" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="Family Doctor Name"
-                    android:id="@+id/textView12" />
+                    android:id="@+id/asdf" />
 
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPersonName"
                     android:ems="10"
-                    android:id="@+id/editText6" />
+                    android:id="@+id/familydoctorname_textfield" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -202,7 +212,7 @@
                     android:layout_height="wrap_content"
                     android:inputType="number"
                     android:ems="10"
-                    android:id="@+id/editText7" />
+                    android:id="@+id/ssn_textfield" />
 
                 <Button
                     android:layout_width="wrap_content"
