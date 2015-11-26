@@ -6,7 +6,8 @@ import java.util.Date;
  * Abstract class for user which shall be extended by Patients and Doctors
  * Created by achyut on 10/8/15.
  */
-public abstract class User {
+public class User {
+    private int id;
     private String username;
     private String password;
     private String address;
@@ -20,6 +21,14 @@ public abstract class User {
     private String usertype;
     private String familydoctorname;
     private String doctor_liscence_number;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getUsername() {
         return username;
@@ -123,5 +132,24 @@ public abstract class User {
 
     public void setDoctor_liscence_number(String doctor_liscence_number) {
         this.doctor_liscence_number = doctor_liscence_number;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", address='" + address + '\'' +
+                ", phone='" + phone + '\'' +
+                ", fullname='" + fullname + '\'' +
+                ", dateofbirth='" + dateofbirth + '\'' +
+                ", ssn='" + ssn + '\'' +
+                ", gender='" + gender + '\'' +
+                ", photourl='" + photourl + '\'' +
+                ", email='" + email + '\'' +
+                ", usertype='" + usertype + '\'' +
+                ", familydoctorname='" + familydoctorname + '\'' +
+                ", doctor_liscence_number='" + doctor_liscence_number + '\'' +
+                '}';
     }
 }

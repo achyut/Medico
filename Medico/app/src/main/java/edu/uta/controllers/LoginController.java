@@ -1,5 +1,6 @@
 package edu.uta.controllers;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +11,8 @@ import android.app.AlertDialog;
 import java.util.HashMap;
 import java.util.Map;
 
+import edu.uta.managers.NetworkMgr;
+
 public class LoginController extends AppCompatActivity {
 
     private Map<String,String> users = new HashMap<String,String>();
@@ -19,6 +22,7 @@ public class LoginController extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         fillUsers();
+        NetworkMgr.setAppContext(this);
     }
 
 
@@ -26,6 +30,7 @@ public class LoginController extends AppCompatActivity {
     public void showRegister(View view) {
         Intent intent = new Intent(this,RegisterController.class);
         startActivity(intent);
+
     }
 
     public void showForgotPassword(View view) {

@@ -1,5 +1,6 @@
 package edu.uta.managers;
 
+import android.app.ActivityManager;
 import android.app.Application;
 import android.content.Context;
 import android.text.TextUtils;
@@ -15,17 +16,18 @@ import edu.uta.edu.uta.utils.LruBitmapCache;
  * Created by gaurav on 11/23/15.
  */
 public class NetworkMgr{
+
     public static final String TAG = NetworkMgr.class
             .getSimpleName();
 
     private RequestQueue mRequestQueue;
     private ImageLoader mImageLoader;
-    private Context appContext;
+    private static Context appContext;
 
     private static NetworkMgr mInstance;
 
-    public void setAppContext(Context applicationContext){
-        this.appContext = applicationContext;
+    public static void setAppContext(Context applicationContext){
+        appContext = applicationContext;
     }
     public static synchronized NetworkMgr getInstance() {
         if(mInstance==null){
@@ -67,4 +69,44 @@ public class NetworkMgr{
             mRequestQueue.cancelAll(tag);
         }
     }
+
+/*
+    private static RequestQueue mRequestQueue;
+    private static ImageLoader mImageLoader;
+
+
+    private NetworkMgr() {
+        // no instances
+    }
+
+
+    public static void init(Context context) {
+        mRequestQueue = Volley.newRequestQueue(context);
+
+        int memClass = ((ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE))
+                .getMemoryClass();
+        // Use 1/8th of the available memory for this memory cache.
+        int cacheSize = 1024 * 1024 * memClass / 8;
+        mImageLoader = new ImageLoader(mRequestQueue, new LruBitmapCache(cacheSize));
+    }
+
+
+    public static RequestQueue getRequestQueue() {
+        if (mRequestQueue != null) {
+            return mRequestQueue;
+        } else {
+            throw new IllegalStateException("RequestQueue not initialized");
+        }
+    }
+
+
+    public static ImageLoader getImageLoader() {
+        if (mImageLoader != null) {
+            return mImageLoader;
+        } else {
+            throw new IllegalStateException("ImageLoader not initialized");
+        }
+    }
+
+    */
 }
