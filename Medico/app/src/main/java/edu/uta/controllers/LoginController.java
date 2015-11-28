@@ -8,24 +8,34 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.app.AlertDialog;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.HashMap;
 import java.util.Map;
 
+import edu.uta.edu.uta.utils.AppUrls;
+import edu.uta.edu.uta.utils.AppUtils;
+import edu.uta.entities.User;
 import edu.uta.managers.NetworkMgr;
 
 public class LoginController extends AppCompatActivity {
 
-    private Map<String,String> users = new HashMap<String,String>();
+    ProgressDialog pDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        fillUsers();
         NetworkMgr.setAppContext(this);
     }
-
-
 
     public void showRegister(View view) {
         Intent intent = new Intent(this,RegisterController.class);
@@ -39,16 +49,60 @@ public class LoginController extends AppCompatActivity {
     }
 
     public void doLogin(View view) {
+        checkLoginAndGetUserType();
+    }
+
+    private void checkLoginAndGetUserType(){
+        pDialog = new ProgressDialog(this);
+        pDialog.setMessage("Signing in...");
+        pDialog.show();
+        RequestQueue queue = NetworkMgr.getInstance().getRequestQueue();
+
+        JSONObject obj = new JSONObject(getLoginParameters());
+        //pDialog.setMessage(getLoginParameters().toString());
+        JsonObjectRequest myReq = new JsonObjectRequest(Request.Method.POST,
+                AppUrls.getLoginUrl(),
+                obj,
+                createMyReqSuccessListener(),
+                createMyReqErrorListener());
+        queue.add(myReq);
+        pDialog.hide();
+    }
+
+    private Map<String,String> getLoginParameters() {
+        Map<String, String> props = new HashMap<String, String>();
+        props.put("username", getValueFromTextView(R.id.username_txt));
+        props.put("password", getValueFromTextView(R.id.password_txt));
+        return props;
+    }
+
+    private Response.Listener<JSONObject> createMyReqSuccessListener() {
+        return new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                try {
+                    boolean loggedin = response.getBoolean("loggedin");
+                    if(loggedin){
+                        int userid = response.getInt("id");
+                        String username = response.getString("username");
+                        String usertype = response.getString("usertype");
+                        AppUtils.setLoggedInUser(getApplicationContext(),userid,usertype,username);
+                        showSuccessDialog(usertype);
+                    }
+                    else{
+                        showIncorrectAlert();
+                    }
+//                    pDialog.setMessage("done" + response.getString("username"));
+                } catch (JSONException e) {
+                    pDialog.setMessage(e.getMessage());
+                }
+            }
+        };
+    }
+
+    private void showSuccessDialog(String usertype){
         Intent doctorDashboard = new Intent(this,DoctorDashboardController.class);
         Intent patientDashboard = new Intent(this,PatientDashboardController.class);
-
-        String username = getValueFromTextView(R.id.username_txt);
-        String password = getValueFromTextView(R.id.password_txt);
-
-        Bundle bundle1 = storeInBundle(username, password);
-
-
-        String usertype = getUserType(username);
         if(usertype!=null){
             if(usertype.equalsIgnoreCase("doctor")){
                 startActivity(doctorDashboard);
@@ -62,20 +116,23 @@ public class LoginController extends AppCompatActivity {
         }
     }
 
-    private Bundle storeInBundle(String username, String password) {
-        Bundle bundle = new Bundle();
-        bundle.putString("username",username);
-        bundle.putString("password",password);
-        return bundle;
+    private DialogInterface.OnClickListener createSuccessClickListener(){
+        return new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                Intent intent = new Intent(getApplicationContext(),LoginController.class);
+                startActivity(intent);
+            }
+        };
     }
 
-    private String getUserType(String username){
-        return users.get(username);
-    }
-
-    private void fillUsers(){
-        users.put("doctor","doctor");
-        users.put("patient","patient");
+    private Response.ErrorListener createMyReqErrorListener() {
+        return new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                pDialog.setMessage(error.getMessage());
+            }
+        };
     }
 
     private String getValueFromTextView(int editTextId){

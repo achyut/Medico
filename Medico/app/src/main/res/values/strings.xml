@@ -5,4 +5,11 @@
         <item>Male</item>
         <item>Other</item>
     </string-array>
+
+    <string-array name="country_array">
+        <item>No Doctor</item>
+    </string-array>
+
+
+
 </resources>

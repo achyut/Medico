@@ -36,7 +36,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/editText9" />
+                android:id="@+id/patientinfo_surgicalhistory" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -48,7 +48,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/editText10" />
+                android:id="@+id/patientinfo_obstetrichistory" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -60,7 +60,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/editText11" />
+                android:id="@+id/patientinfo_allergies" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -72,7 +72,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/editText12" />
+                android:id="@+id/patientinfo_familyhistory" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -84,7 +84,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/editText13" />
+                android:id="@+id/patientinfo_socialhistory" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -96,7 +96,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/editText14" />
+                android:id="@+id/patientinfo_immunizationhistory" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -108,12 +108,14 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/editText15" />
+                android:id="@+id/patientinfo_habits" />
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="doUpdatePatientInfo"
                 android:text="Submit"
+
                 android:id="@+id/button3" />
 
         </LinearLayout>

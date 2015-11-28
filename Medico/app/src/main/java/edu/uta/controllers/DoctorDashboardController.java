@@ -1,16 +1,27 @@
 package edu.uta.controllers;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import edu.uta.edu.uta.utils.AppUtils;
+
 public class DoctorDashboardController extends AppCompatActivity {
+    ProgressDialog pDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doctor_dashboard);
+        pDialog = new ProgressDialog(this);
+
+        /*
+            int id = AppUtils.getUserFromSession(this).getId();
+            pDialog.setMessage(String.valueOf(id));
+            pDialog.show();
+        */
     }
 
     public void showSearchGUI(View view) {
@@ -38,6 +49,7 @@ public class DoctorDashboardController extends AppCompatActivity {
     }
 
     public void doLogout(View view) {
+        AppUtils.clearLogin(this);
         Intent intent = new Intent(this,LoginController.class);
         startActivity(intent);
     }
