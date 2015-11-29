@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import edu.uta.edu.uta.utils.AppUtils;
+import edu.uta.edu.uta.utils.AppointmentUtils;
 
 public class DoctorDashboardController extends AppCompatActivity {
     ProgressDialog pDialog;
@@ -30,8 +31,8 @@ public class DoctorDashboardController extends AppCompatActivity {
     }
 
     public void showAppointmentScheduledGUI(View view) {
-        Intent intent = new Intent(this,DoctorOrderController.class);
-        startActivity(intent);
+        AppointmentUtils appointmentUtils = new AppointmentUtils(this);
+        appointmentUtils.getAppointmentOfUser();
     }
 
     public void showNewMedicalReport(View view) {

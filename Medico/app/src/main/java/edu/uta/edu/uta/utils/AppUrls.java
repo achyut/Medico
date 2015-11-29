@@ -4,7 +4,9 @@ package edu.uta.edu.uta.utils;
  * Created by gaurav on 11/23/15.
  */
 public class AppUrls {
-    final static String BASE_URL = "http://192.168.0.8:8000/";
+    //final static String BASE_URL = "http://192.168.0.8:8000/";
+    final static String BASE_URL = "http://5efcc162.ngrok.io/";
+
 
     final  static String LOGIN_URL = BASE_URL+"login";
     final static String LOGOUT_URL = BASE_URL+"logout";
@@ -21,7 +23,29 @@ public class AppUrls {
     final static String CREATEA_NEW_APPOINTMENT = BASE_URL+"appointments";
     final static String DELETE_APPOINTMENT  = BASE_URL+"appointments";
     final static String GET_APPOINTMENTS_OF_USER = BASE_URL+"getuserappointment";
-    final static String GET_APPOINTMENTS_OF_DOCTOR = BASE_URL+"getuserappointment";
+    final static String GET_APPOINTMENTS_OF_DOCTOR = BASE_URL+"getdoctorappointment";
+    final static String GET_APPOINTMENT_DETAILS = BASE_URL+"appointments";
+
+    final static String GET_DEVICE_VALUES = BASE_URL+"devicedata";
+    final static String SAVE_REPORT = BASE_URL+"medicalreports";
+
+    final static String CREATE_DOCTOR_ORDER = BASE_URL+"doctororders";
+
+    public static String getCreateDoctorOrder() {
+        return CREATE_DOCTOR_ORDER;
+    }
+
+    public static String getSaveReport() {
+        return SAVE_REPORT;
+    }
+
+    public static String getGetDeviceValues() {
+        return GET_DEVICE_VALUES;
+    }
+
+    public static String getGetAppointmentDetails(int appointmentid) {
+        return GET_APPOINTMENT_DETAILS+"/"+appointmentid;
+    }
 
     public static String getGetAppointmentsOfDoctor(int userid) {
         return GET_APPOINTMENTS_OF_DOCTOR+"/"+userid;

@@ -52,8 +52,6 @@ public class AppointmentListController extends ListActivity {
             setListAdapter(new CardArrayAdapter(this, list));
         }
         //setListAdapter(new MobileAdapter(this,getAppointmentList()));
-
-
     }
 
     @Override
@@ -106,19 +104,12 @@ public class AppointmentListController extends ListActivity {
     private ArrayList<AppointmentCard> getAppointmentList(){
 
         ArrayList<AppointmentCard> arrayOfAppointments = new ArrayList<AppointmentCard>();
-        AppointmentCard app1 = new AppointmentCard("date1","doctor1",1,true);
-        AppointmentCard app2 = new AppointmentCard("date2","doctor1",2,true);
-        AppointmentCard app3 = new AppointmentCard("date3","doctor1",3,true);
+        AppointmentCard app1 = new AppointmentCard("date1","doctor1","patient1",1,true);
+        AppointmentCard app2 = new AppointmentCard("date2","doctor1","patient2",2,true);
+        AppointmentCard app3 = new AppointmentCard("date3","doctor1","patient3",3,true);
         arrayOfAppointments.add(app1);
         arrayOfAppointments.add(app2);
         arrayOfAppointments.add(app3);
         return arrayOfAppointments;
     }
-
-  /*
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_appointment_list);
-    }*/
 }

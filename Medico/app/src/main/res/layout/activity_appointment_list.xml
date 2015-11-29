@@ -30,6 +30,12 @@
                 android:layout_height="25dp"
                 android:text="  Appointment on date: 2015-10-10"
                 android:textSize="20dp" />
+            <TextView
+                android:id="@+id/appointment_patientname"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:text="  Patient name: Achyut Paudel"
+                android:textSize="15dp" />
 
             <TextView
                 android:id="@+id/appointment_doctorname"
@@ -40,7 +46,7 @@
                 android:layout_above="@+id/appointmentlist_viewdetails"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:layout_marginBottom="32dp" />
+                android:layout_weight="0.50" />
 
         <RelativeLayout
             android:orientation="horizontal"

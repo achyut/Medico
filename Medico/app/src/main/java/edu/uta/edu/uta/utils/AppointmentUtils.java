@@ -96,9 +96,10 @@ public class AppointmentUtils {
             JSONObject obj = arr.getJSONObject(i);
             String date = obj.getString("date");
             String doctor = obj.getString("doctor_id");
+            String patient = obj.getString("patient_id");
             String status = obj.getString("appointment_status");
             int app_id = obj.getInt("id");
-            AppointmentCard app1 = new AppointmentCard(date,doctor,app_id,true);
+            AppointmentCard app1 = new AppointmentCard(date,doctor,patient,app_id,true);
             arrayOfAppointments.add(app1);
         }
         return arrayOfAppointments;

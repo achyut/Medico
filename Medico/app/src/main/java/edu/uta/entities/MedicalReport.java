@@ -8,15 +8,18 @@ import java.util.Date;
  */
 public class MedicalReport {
 
-    private int appointment_id;
-    private String bloodpressure;
-    private String temperature;
+    private String appointment_id = "0";
+    private String bloodpressure = "0";
+    private String temperature = "0";
+    private String heartbeat = "0";
+    private String airflow = "0";
+    private String bloodsugerlevel = "0";
 
-    public int getAppointment_id() {
+    public String getAppointment_id() {
         return appointment_id;
     }
 
-    public void setAppointment_id(int appointment_id) {
+    public void setAppointment_id(String appointment_id) {
         this.appointment_id = appointment_id;
     }
 
@@ -34,5 +37,29 @@ public class MedicalReport {
 
     public void setTemperature(String temperature) {
         this.temperature = temperature;
+    }
+
+    public String getHeartbeat() {
+        return heartbeat;
+    }
+
+    public void setHeartbeat(String heartbeat) {
+        this.heartbeat = heartbeat;
+    }
+
+    public String getAirflow() {
+        return airflow;
+    }
+
+    public void setAirflow(String airflow) {
+        this.airflow = airflow;
+    }
+
+    public String getBloodsugerlevel() {
+        return bloodsugerlevel;
+    }
+
+    public void setBloodsugerlevel(String bloodsugerlevel) {
+        this.bloodsugerlevel = bloodsugerlevel;
     }
 }

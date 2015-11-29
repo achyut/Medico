@@ -26,6 +26,7 @@ import java.util.ArrayList;
 
 import edu.uta.controllers.AppointmentDetailsController;
 import edu.uta.controllers.AppointmentListController;
+import edu.uta.controllers.DoctorDashboardController;
 import edu.uta.controllers.PatientDashboardController;
 import edu.uta.controllers.PatientInformationController;
 import edu.uta.controllers.R;
@@ -60,24 +61,22 @@ public class CardArrayAdapter  extends ArrayAdapter<AppointmentCard> {
 
         TextView date = (TextView) rowView.findViewById(R.id.appointment_highlight);
         TextView doctor = (TextView) rowView.findViewById(R.id.appointment_doctorname);
+        TextView patient = (TextView) rowView.findViewById(R.id.appointment_patientname);
 
         Button viewdetailbutton = (Button) rowView.findViewById(R.id.appointmentlist_viewdetails);
         Button cancelbutton = (Button) rowView.findViewById(R.id.appointmentlist_cancel);
 
-        date.setText("Appointment for date: " + app.getDate());
-        doctor.setText("Doctor name: " + app.getDoctorname());
+        date.setText("  Appointment for date: " + app.getDate());
+        doctor.setText("  Doctor name: " + app.getDoctorname());
+        patient.setText("  Patient name: " + app.getPatientname());
 
 
         viewdetailbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 pos = position;
-                AppointmentCard appcard = values.get(position);
-                Bundle bundle = new Bundle();
-                bundle.putInt("appointment_id", appcard.getAppointmentid());
-                Intent intent = new Intent(context, AppointmentDetailsController.class);
-                intent.putExtras(bundle);
-                context.startActivity(intent);
+                AppointmentCard appcard = values.get(pos);
+                getDetailsDialog(appcard);
             }
 
         });
@@ -95,6 +94,50 @@ public class CardArrayAdapter  extends ArrayAdapter<AppointmentCard> {
     }
 
 
+    private void getDetailsDialog(AppointmentCard appcard){
+        pDialog = new ProgressDialog(context);
+        pDialog.setMessage("Getting appointment details...");
+        pDialog.show();
+        JsonObjectRequest myReq = new JsonObjectRequest(Request.Method.GET,
+                AppUrls.getGetAppointmentDetails(appcard.getAppointmentid()),
+                null,
+                createViewDetailsListener(),
+                createMyReqErrorListener());
+        NetworkMgr.getInstance().getRequestQueue().add(myReq);
+
+    }
+
+    private Response.Listener<JSONObject> createViewDetailsListener() {
+        return new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                try {
+                    //pDialog.setMessage(response.toString());
+                    pDialog.hide();
+                    if(!response.getBoolean("error")){
+                        Bundle bundle = new Bundle();
+                        bundle.putString("date",response.getString("date"));
+                        bundle.putString("doctor",response.getString("doctor"));
+                        bundle.putString("appointment_id",response.getString("appointment_id"));
+                        bundle.putString("appointment_status",response.getString("appointment_status"));
+                        bundle.putString("chief_complaint",response.getString("chief_complaint"));
+                        bundle.putString("summary_of_illness",response.getString("summary_of_illness"));
+                        bundle.putString("physical_examination",response.getString("physical_examination"));
+                        bundle.putString("assessment", response.getString("assessment"));
+                        Intent intent = new Intent(context, AppointmentDetailsController.class);
+                        intent.putExtras(bundle);
+                        context.startActivity(intent);
+                    }
+                    else{
+                        pDialog.setMessage(response.getString("message"));
+                    }
+
+                } catch (JSONException e) {
+                    pDialog.setMessage(e.getMessage());
+                }
+            }
+        };
+    }
 
     private void showDeleteDialog(){
         AlertDialog alertDialog = new AlertDialog.Builder(context).create();
@@ -144,20 +187,22 @@ public class CardArrayAdapter  extends ArrayAdapter<AppointmentCard> {
         return new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
+                showDeleteSuccessDialog();
+                /*
                 try {
                     //pDialog.hide();
-                    showDeleteSuccessDialog();
-                    if(!response.getBoolean("error")){
+                    *//*if(!response.getBoolean("error")){
                         Intent intent = new Intent(context,AppointmentListController.class);
                         context.startActivity(intent);
                     }
                     else{
-                        Intent intent = new Intent(context,PatientDashboardController.class);
-                        context.startActivity(intent);
+
                     }
+                    *//*
+
                 } catch (JSONException e) {
                     pDialog.setMessage(e.getMessage());
-                }
+                }*/
             }
         };
     }
@@ -175,6 +220,15 @@ public class CardArrayAdapter  extends ArrayAdapter<AppointmentCard> {
         return new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
+                String usertypr = AppUtils.getUserFromSession(context).getUsertype();
+                if(usertypr.equalsIgnoreCase("patient")){
+                    Intent intent = new Intent(context,PatientDashboardController.class);
+                    context.startActivity(intent);
+                }
+                else{
+                    Intent intent = new Intent(context, DoctorDashboardController.class);
+                    context.startActivity(intent);
+                }
             }
         };
     }

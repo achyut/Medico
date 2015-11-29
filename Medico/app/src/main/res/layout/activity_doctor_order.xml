@@ -41,7 +41,7 @@
                 android:inputType="textMultiLine"
                 android:lines="8"
                 android:minLines="6"
-                android:id="@+id/editText20" />
+                android:id="@+id/doctororder_symptoms" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -57,7 +57,7 @@
                 android:inputType="textMultiLine"
                 android:lines="8"
                 android:minLines="6"
-                android:id="@+id/editText21" />
+                android:id="@+id/doctororder_diagnosis" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -73,11 +73,12 @@
                 android:inputType="textMultiLine"
                 android:lines="8"
                 android:minLines="6"
-                android:id="@+id/editText19" />
+                android:id="@+id/doctororder_medicalprescribed" />
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Submit"
+                android:onClick="doSave"
                 android:id="@+id/button17"
                 android:layout_below="@+id/scrollView2"
                 android:layout_alignParentLeft="true"

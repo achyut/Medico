@@ -10,13 +10,23 @@ public class AppointmentCard{
     private String date;
     private String doctorname;
     private boolean status;
+    private String patientname;
     private int appointmentid;
 
-    public AppointmentCard(String date, String doctorname, int appointmentid, boolean status) {
+    public AppointmentCard(String date, String doctorname,String patientname, int appointmentid, boolean status) {
         this.date = date;
         this.doctorname = doctorname;
+        this.patientname = patientname;
         this.appointmentid = appointmentid;
         this.status = status;
+    }
+
+    public String getPatientname() {
+        return patientname;
+    }
+
+    public void setPatientname(String patientname) {
+        this.patientname = patientname;
     }
 
     public String getDate() {
