@@ -24,6 +24,8 @@ import junit.framework.Assert;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -70,8 +72,19 @@ public class RegisterController extends AppCompatActivity {
                 }
             }
         });
+        setDefaultDate();
     }
 
+    private void setDefaultDate(){
+        Date date = new Date();
+        SimpleDateFormat format = new SimpleDateFormat("MM-dd-yyyy");
+        String dt = format.format(date);
+        setValueToTextView(dt, R.id.dateofbirth_textfield);
+    }
+    private void setValueToTextView(String value,int editTextId){
+        EditText editText = (EditText) findViewById(editTextId);
+        editText.setText(value);
+    }
     public void doRegister(View view) {
         pDialog = new ProgressDialog(this);
         pDialog.setMessage("Registering...");
