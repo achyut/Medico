@@ -5,9 +5,11 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="edu.uta.controllers.MedicalReportController">
+    tools:context="edu.uta.controllers.MedicalRecordController">
 
-
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -21,7 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Medical report values"
+            android:text="Patient Information"
             android:id="@+id/textView45"
             android:textSize="30dp"
             android:layout_weight="0.06" />
@@ -30,8 +32,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Blood pressure"
-            android:id="@+id/textView47"
+            android:text="Surgical History"
+            android:id="@+id/textView57"
             android:layout_weight="0.06" />
 
         <TextView
@@ -39,15 +41,31 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Medium Text"
-            android:id="@+id/medicalreport_bloodpressure"
+            android:id="@+id/tabfragment2_surgicalhistory"
+            android:layout_weight="0.06" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Obstetric history"
+            android:id="@+id/textView17"
+            android:layout_weight="0.06" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Obstrac history"
+            android:id="@+id/tabfragment2_obstetrichistory"
             android:layout_weight="0.06" />
 
         <TextView
             android:layout_width="248dp"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Body Temperature"
-            android:id="@+id/textView51"
+            android:text="Allergies"
+            android:id="@+id/textView18"
             android:layout_weight="0.06" />
 
         <TextView
@@ -55,15 +73,15 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Medium Text"
-            android:id="@+id/medicalreport_temperature"
+            android:id="@+id/tabfragment2_allergy"
             android:layout_weight="0.06" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Heart Beat"
-            android:id="@+id/textView54"
+            android:text="Family history"
+            android:id="@+id/textView19"
             android:layout_weight="0.06" />
 
         <TextView
@@ -71,15 +89,15 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Medium Text"
-            android:id="@+id/medicalreport_heartbeat"
+            android:id="@+id/tabfragment2_familyhistory"
             android:layout_weight="0.06" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Airflow"
-            android:id="@+id/textView53"
+            android:text="Social history"
+            android:id="@+id/textView20"
             android:layout_weight="0.06" />
 
         <TextView
@@ -87,15 +105,15 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Medium Text"
-            android:id="@+id/medicalreport_airflow"
+            android:id="@+id/tabfragment2_socialhistory"
             android:layout_weight="0.06" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Blood suger level"
-            android:id="@+id/textView55"
+            android:text="Immunization history"
+            android:id="@+id/textView22"
             android:layout_weight="0.06" />
 
         <TextView
@@ -103,33 +121,24 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Medium Text"
-            android:id="@+id/medicalreport_bloodsuger"
+            android:id="@+id/tabfragment2_immunizationhistory"
             android:layout_weight="0.06" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="49dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Habits"
+            android:id="@+id/textView56"
+            android:layout_weight="0.06" />
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Save"
-                android:onClick="doSave"
-                android:id="@+id/medicalrecord_savebutton"
-                android:layout_weight="0.06"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Refresh"
-                android:id="@+id/medicalrecord_refresh"
-                android:onClick="doRefresh"
-                android:layout_alignTop="@+id/medicalrecord_savebutton"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" />
-        </RelativeLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Medium Text"
+            android:id="@+id/tabfragment2_habits"
+            android:layout_weight="0.06" />
     </LinearLayout>
+    </ScrollView>
 </RelativeLayout>

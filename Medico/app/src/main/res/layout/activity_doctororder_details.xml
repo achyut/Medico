@@ -5,7 +5,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="edu.uta.controllers.MedicalReportController">
+    tools:context="edu.uta.controllers.DoctorOrderDetialsController">
 
 
     <LinearLayout
@@ -21,7 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Medical report values"
+            android:text="Doctor order details:"
             android:id="@+id/textView45"
             android:textSize="30dp"
             android:layout_weight="0.06" />
@@ -30,7 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Blood pressure"
+            android:text="Symptoms"
             android:id="@+id/textView47"
             android:layout_weight="0.06" />
 
@@ -39,14 +39,14 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Medium Text"
-            android:id="@+id/medicalreport_bloodpressure"
+            android:id="@+id/doctor_orderdetials_symptoms"
             android:layout_weight="0.06" />
 
         <TextView
             android:layout_width="248dp"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Body Temperature"
+            android:text="Diagnosis"
             android:id="@+id/textView51"
             android:layout_weight="0.06" />
 
@@ -55,14 +55,14 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Medium Text"
-            android:id="@+id/medicalreport_temperature"
+            android:id="@+id/doctor_orderdetials_diagnosis"
             android:layout_weight="0.06" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Heart Beat"
+            android:text="Medicine Prescribed"
             android:id="@+id/textView54"
             android:layout_weight="0.06" />
 
@@ -71,65 +71,8 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Medium Text"
-            android:id="@+id/medicalreport_heartbeat"
+            android:id="@+id/doctor_orderdetails_medicineprescribed"
             android:layout_weight="0.06" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Airflow"
-            android:id="@+id/textView53"
-            android:layout_weight="0.06" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Medium Text"
-            android:id="@+id/medicalreport_airflow"
-            android:layout_weight="0.06" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Blood suger level"
-            android:id="@+id/textView55"
-            android:layout_weight="0.06" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Medium Text"
-            android:id="@+id/medicalreport_bloodsuger"
-            android:layout_weight="0.06" />
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="49dp">
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Save"
-                android:onClick="doSave"
-                android:id="@+id/medicalrecord_savebutton"
-                android:layout_weight="0.06"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Refresh"
-                android:id="@+id/medicalrecord_refresh"
-                android:onClick="doRefresh"
-                android:layout_alignTop="@+id/medicalrecord_savebutton"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" />
-        </RelativeLayout>
     </LinearLayout>
 </RelativeLayout>

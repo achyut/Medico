@@ -55,7 +55,7 @@ public class CardArrayAdapter  extends ArrayAdapter<AppointmentCard> {
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        View rowView = inflater.inflate(R.layout.activity_appointment_list, parent, false);
+        View rowView = inflater.inflate(R.layout.appointmentlist_card, parent, false);
         AppointmentCard app = values.get(position);
 
 
@@ -65,7 +65,13 @@ public class CardArrayAdapter  extends ArrayAdapter<AppointmentCard> {
 
         Button viewdetailbutton = (Button) rowView.findViewById(R.id.appointmentlist_viewdetails);
         Button cancelbutton = (Button) rowView.findViewById(R.id.appointmentlist_cancel);
-
+        boolean medicalRecordPage = AppUtils.getViewMedicalRecord(context);
+        if(medicalRecordPage){
+            cancelbutton.setVisibility(View.GONE);
+        }
+        else{
+            cancelbutton.setVisibility(View.VISIBLE);
+        }
         date.setText("  Appointment for date: " + app.getDate());
         doctor.setText("  Doctor name: " + app.getDoctorname());
         patient.setText("  Patient name: " + app.getPatientname());

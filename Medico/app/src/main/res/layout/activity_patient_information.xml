@@ -43,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Obstetric history"
-                android:id="@+id/textView17" />
+                android:id="@+id/textView51" />
 
             <EditText
                 android:layout_width="match_parent"
@@ -55,7 +55,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Allergies"
-                android:id="@+id/textView18" />
+                android:id="@+id/textView54" />
 
             <EditText
                 android:layout_width="match_parent"
@@ -67,7 +67,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Family history"
-                android:id="@+id/textView19" />
+                android:id="@+id/textView53" />
 
             <EditText
                 android:layout_width="match_parent"
@@ -79,7 +79,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Social history"
-                android:id="@+id/textView20" />
+                android:id="@+id/textView55" />
 
             <EditText
                 android:layout_width="match_parent"

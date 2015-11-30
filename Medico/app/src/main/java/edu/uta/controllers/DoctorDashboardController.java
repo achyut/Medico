@@ -8,6 +8,7 @@ import android.view.View;
 
 import edu.uta.edu.uta.utils.AppUtils;
 import edu.uta.edu.uta.utils.AppointmentUtils;
+import edu.uta.edu.uta.utils.TabFragment2;
 
 public class DoctorDashboardController extends AppCompatActivity {
     ProgressDialog pDialog;
@@ -32,6 +33,7 @@ public class DoctorDashboardController extends AppCompatActivity {
 
     public void showAppointmentScheduledGUI(View view) {
         AppointmentUtils appointmentUtils = new AppointmentUtils(this);
+        AppUtils.setViewMedicalRecord(this,false);
         appointmentUtils.getAppointmentOfUser();
     }
 
@@ -41,7 +43,11 @@ public class DoctorDashboardController extends AppCompatActivity {
     }
 
     public void showMedicalRecordGUI(View view) {
+        Bundle bundle = new Bundle();
+        bundle.putInt("patient_id", AppUtils.getUserFromSession(this).getId());
         Intent intent = new Intent(this,MedicalRecordController.class);
+        intent.putExtras(bundle);
+        AppUtils.setViewMedicalRecord(this,true);
         startActivity(intent);
     }
     public void showUpdatePasswordGUI(View view) {

@@ -63,44 +63,6 @@ public class AppointmentListController extends ListActivity {
 
     }
 
-    /*
-    ProgressDialog pDialog;
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-
-        *//*Bundle bundle = getIntent().getExtras();
-        if(bundle!=null){
-            String str = bundle.getString("appointments");
-
-            Gson gson = new Gson();
-            Type listOfTestObject = new TypeToken<ArrayList<AppointmentCard>>(){}.getType();
-            ArrayList<AppointmentCard> list = gson.fromJson(str, listOfTestObject);
-            pDialog = new ProgressDialog(this);
-            pDialog.setMessage(list.toString());
-            pDialog.show();
-        }
-*//*
-        super.onCreate(savedInstanceState);
-
-        setListAdapter(new MobileAdapter(getApplicationContext(), getAppointmentList()));
-*//*
-
-        ListView listView = getListView();
-        listView.setTextFilterEnabled(true);
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    int position, long id) {
-                // When clicked, show a toast with the TextView text
-                Toast.makeText(getApplicationContext(),
-                        ((TextView) view).getText(), Toast.LENGTH_SHORT).show();
-            }
-        });
-*//*
-
-    }*/
-
     private ArrayList<AppointmentCard> getAppointmentList(){
 
         ArrayList<AppointmentCard> arrayOfAppointments = new ArrayList<AppointmentCard>();

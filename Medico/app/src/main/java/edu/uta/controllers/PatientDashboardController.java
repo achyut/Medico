@@ -80,16 +80,9 @@ public class PatientDashboardController extends AppCompatActivity {
     }
 
     public void showViewAppointmentsGUI(View view) {
-/*
-
-        Intent intent = new Intent(this,AppointmentListController.class);
-        startActivity(intent);
-*/
-
-
+        AppUtils.setViewMedicalRecord(this,false);
         AppointmentUtils appointmentUtils = new AppointmentUtils(this);
         appointmentUtils.getAppointmentOfUser();
-
     }
 
     public void showUpdatePatientInformationGUI(View view) {
@@ -101,7 +94,13 @@ public class PatientDashboardController extends AppCompatActivity {
     }
 
     public void showMedicalRecordGUI(View view) {
+        Bundle bundle = new Bundle();
+        bundle.putInt("patient_id",AppUtils.getUserFromSession(this).getId());
+
         Intent intent = new Intent(this,MedicalRecordController.class);
+        intent.putExtras(bundle);
+
+        AppUtils.setViewMedicalRecord(this, true);
         startActivity(intent);
     }
 

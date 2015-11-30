@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -41,27 +42,46 @@ public class MedicalReportController extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_medical_report);
         Bundle bundle = getIntent().getExtras();
+        boolean medicalRecordPage = AppUtils.getViewMedicalRecord(this);
         if(bundle!=null){
             this.appointmentid = bundle.getString("appointment_id");
-            if(appointmentid!=null){
-                Button btn = (Button) findViewById(R.id.medicalrecord_savebutton);
-                btn.setVisibility(View.VISIBLE);
-            }
-            else{
-                hideSaveButton();
-            }
         }
-        else{
-            hideSaveButton();
-        }
+        checkForRefreshHide(medicalRecordPage);
         updateReport();
     }
 
-    private void hideSaveButton(){
-        Button btn = (Button) findViewById(R.id.medicalrecord_savebutton);
-        btn.setVisibility(View.GONE);
+    private void checkForRefreshHide(boolean medicalRecordPage){
+        String usertypr = AppUtils.getUserFromSession(this).getUsertype();
+        if(usertypr.equalsIgnoreCase("doctor")){
+            if(!medicalRecordPage){
+                Button btn = (Button) findViewById(R.id.medicalrecord_refresh);
+                btn.setVisibility(View.VISIBLE);
+                if(appointmentid!=null){
+                    btn = (Button) findViewById(R.id.medicalrecord_savebutton);
+                    btn.setVisibility(View.VISIBLE);
+                }
+                else{
+                    btn = (Button) findViewById(R.id.medicalrecord_savebutton);
+                    btn.setVisibility(View.GONE);
+                }
 
+            }
+            else{
+                hideSaveAndRefreshButton();
+            }
+        }
+        else{
+            hideSaveAndRefreshButton();
+        }
     }
+
+    private void hideSaveAndRefreshButton(){
+        Button btn = (Button) findViewById(R.id.medicalrecord_refresh);
+        btn.setVisibility(View.GONE);
+        btn = (Button) findViewById(R.id.medicalrecord_savebutton);
+        btn.setVisibility(View.GONE);
+    }
+
     public void updateReport(){
         pDialog = new ProgressDialog(this);
         pDialog.setMessage("Getting report data from device...");

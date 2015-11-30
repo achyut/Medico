@@ -53,6 +53,17 @@ public class AppUtils {
         editor.putBoolean("logged",true);
         editor.commit();
     }
+    public static void setViewMedicalRecord(Context context,boolean showView){
+        SharedPreferences settings = context.getSharedPreferences(PREFS_NAME, 0);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putBoolean("view_medicalrecord",showView);
+        editor.commit();
+    }
+
+    public static boolean getViewMedicalRecord(Context context){
+        SharedPreferences settings = context.getSharedPreferences(PREFS_NAME, 0);
+        return settings.getBoolean("view_medicalrecord",true);
+    }
 
     public static void clearLogin(Context activity){
         SharedPreferences settings = activity.getSharedPreferences(PREFS_NAME, 0);

@@ -4,8 +4,8 @@ package edu.uta.edu.uta.utils;
  * Created by gaurav on 11/23/15.
  */
 public class AppUrls {
-    //final static String BASE_URL = "http://192.168.0.8:8000/";
-    final static String BASE_URL = "http://5efcc162.ngrok.io/";
+    final static String BASE_URL = "http://192.168.0.8:8000/";
+   // final static String BASE_URL = "http://5efcc162.ngrok.io/";
 
 
     final  static String LOGIN_URL = BASE_URL+"login";
@@ -20,6 +20,7 @@ public class AppUrls {
 
     final static String GET_USER_URL = BASE_URL+"users/";
     final static String GET_ALL_DOCTORS = BASE_URL+"getalldoctors";
+
     final static String CREATEA_NEW_APPOINTMENT = BASE_URL+"appointments";
     final static String DELETE_APPOINTMENT  = BASE_URL+"appointments";
     final static String GET_APPOINTMENTS_OF_USER = BASE_URL+"getuserappointment";
@@ -30,6 +31,11 @@ public class AppUrls {
     final static String SAVE_REPORT = BASE_URL+"medicalreports";
 
     final static String CREATE_DOCTOR_ORDER = BASE_URL+"doctororders";
+    final static String GET_DOCTOR_ORDER = BASE_URL+"doctororders";
+
+    public static String getGetDoctorOrder(String appointmentId) {
+        return GET_DOCTOR_ORDER+"/"+appointmentId;
+    }
 
     public static String getCreateDoctorOrder() {
         return CREATE_DOCTOR_ORDER;

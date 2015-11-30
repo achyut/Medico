@@ -1,10 +1,12 @@
 package edu.uta.edu.uta.utils;
-
-import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.ListFragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -19,22 +21,30 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import edu.uta.controllers.AppointmentListController;
-import edu.uta.controllers.MedicalReportController;
-import edu.uta.controllers.PatientInformationController;
+import edu.uta.controllers.R;
 import edu.uta.entities.AppointmentCard;
 import edu.uta.managers.NetworkMgr;
 
-/**
- * Created by gaurav on 11/28/15.
- */
-public class AppointmentUtils {
+public class TabFragment1 extends ListFragment {
 
-    Context context;
-    ProgressDialog pDialog;
-   // Integer patientId;
-    public AppointmentUtils(Context context) {
-        this.context = context;
+    private  int patientId;
+    private ProgressDialog pDialog;
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.tab_fragment1, container, false);
     }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+
+        super.onActivityCreated(savedInstanceState);
+        int patientId = getArguments().getInt("patient_id");
+        this.patientId = patientId;
+        super.onActivityCreated(savedInstanceState);
+        getAppointmentOfUser();
+    }
+
 
     private Response.Listener<JSONObject> createMyReqSuccessListener() {
         return new Response.Listener<JSONObject>() {
@@ -42,14 +52,8 @@ public class AppointmentUtils {
             public void onResponse(JSONObject response) {
                 try {
                     if(!response.getBoolean("error")){
-                        Gson gson = new Gson();
-                        String val = gson.toJson(getAppointmentList(response));
-                       // pDialog.setMessage(val);
-                        Bundle bundle = new Bundle();
-                        bundle.putString("appointments", val);
-                        Intent intent = new Intent(context,AppointmentListController.class);
-                        intent.putExtras(bundle);
-                        context.startActivity(intent);
+                        ArrayList<AppointmentCard> list = getAppointmentList(response);
+                        setListAdapter(new CardArrayAdapter(getActivity(), list));
                         pDialog.hide();
                     }
                     else{
@@ -70,20 +74,13 @@ public class AppointmentUtils {
             }
         };
     }
-    private String getUrl(){
-        if(AppUtils.getUserFromSession(context).getUsertype().equalsIgnoreCase("doctor")){
-            return AppUrls.getGetAppointmentsOfDoctor(AppUtils.getUserFromSession(context).getId());
-        }
-        else{
-            return AppUrls.getGetAppointmentsOfUser(AppUtils.getUserFromSession(context).getId());
-        }
-    }
+
     public void getAppointmentOfUser(){
-        pDialog = new ProgressDialog(context);
+        pDialog = new ProgressDialog(getContext());
         pDialog.setMessage("Getting all appointment...");
         pDialog.show();
         JsonObjectRequest myReq = new JsonObjectRequest(Request.Method.GET,
-                getUrl(),
+                AppUrls.getGetAppointmentsOfUser(patientId),
                 null,
                 createMyReqSuccessListener(),
                 createMyReqErrorListener());
@@ -106,4 +103,17 @@ public class AppointmentUtils {
         return arrayOfAppointments;
     }
 
+/*
+    private ArrayList<AppointmentCard> getAppointmentList(){
+
+        ArrayList<AppointmentCard> arrayOfAppointments = new ArrayList<AppointmentCard>();
+        AppointmentCard app1 = new AppointmentCard("date1","doctor1","patient1",1,true);
+        AppointmentCard app2 = new AppointmentCard("date2","doctor1","patient2",2,true);
+        AppointmentCard app3 = new AppointmentCard("date3","doctor1","patient3",3,true);
+        arrayOfAppointments.add(app1);
+        arrayOfAppointments.add(app2);
+        arrayOfAppointments.add(app3);
+        return arrayOfAppointments;
+    }
+    */
 }

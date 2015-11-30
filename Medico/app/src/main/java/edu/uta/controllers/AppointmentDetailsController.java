@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -39,17 +40,29 @@ public class AppointmentDetailsController extends AppCompatActivity {
             setValueToTextView(bundle.getString("assessment"), R.id.appointmentdetails_assessment);
         }
         String usertypr = AppUtils.getUserFromSession(this).getUsertype();
+        boolean medicalRecordPage = AppUtils.getViewMedicalRecord(this);
+
         if(usertypr.equalsIgnoreCase("patient")){
-            Button btn = (Button) findViewById(R.id.appointmentdetails_doctorbutton);
-            btn.setVisibility(View.GONE);
-            btn = (Button) findViewById(R.id.appointmentdetails_reportbutton);
-            btn.setVisibility(View.GONE);
+            RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.appointmentdetails_createbuttonslayout);
+            relativeLayout.setVisibility(View.GONE);
+            relativeLayout = (RelativeLayout) findViewById(R.id.appointmentdetails_viewbuttonslayout);
+            relativeLayout.setVisibility(View.VISIBLE);
         }
         else{
-            Button btn = (Button) findViewById(R.id.appointmentdetails_doctorbutton);
-            btn.setVisibility(View.VISIBLE);
-            btn = (Button) findViewById(R.id.appointmentdetails_reportbutton);
-            btn.setVisibility(View.VISIBLE);
+            if(!medicalRecordPage){
+                RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.appointmentdetails_createbuttonslayout);
+                relativeLayout.setVisibility(View.VISIBLE);
+                relativeLayout = (RelativeLayout) findViewById(R.id.appointmentdetails_viewbuttonslayout);
+                relativeLayout.setVisibility(View.GONE);
+
+            }
+            else{
+                RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.appointmentdetails_createbuttonslayout);
+                relativeLayout.setVisibility(View.GONE);
+                relativeLayout = (RelativeLayout) findViewById(R.id.appointmentdetails_viewbuttonslayout);
+                relativeLayout.setVisibility(View.VISIBLE);
+            }
+
         }
     }
 
@@ -70,6 +83,22 @@ public class AppointmentDetailsController extends AppCompatActivity {
         Bundle bundle = new Bundle();
         bundle.putString("appointment_id",this.appointmentid);
         Intent intent = new Intent(this,DoctorOrderController.class);
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
+
+    public void doViewReport(View view){
+        Bundle bundle = new Bundle();
+        bundle.putString("appointment_id",this.appointmentid);
+        Intent intent = new Intent(this,MedicalReportController.class);
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
+
+    public void doViewDoctorOrder(View view){
+        Bundle bundle = new Bundle();
+        bundle.putString("appointment_id",this.appointmentid);
+        Intent intent = new Intent(this,DoctorOrderDetialsController.class);
         intent.putExtras(bundle);
         startActivity(intent);
     }

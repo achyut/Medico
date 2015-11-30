@@ -129,16 +129,17 @@
             android:id="@+id/appointmentdetails_status"
             android:layout_weight="0.07" />
 
-        <LinearLayout
+        <RelativeLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
+            android:id="@+id/appointmentdetails_createbuttonslayout"
             android:layout_height="wrap_content">
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Examine"
-                android:id="@+id/appointmentdetails_doctorbutton"
+                android:id="@+id/appointmentdetails_createdoctororderbutton"
                 android:layout_alignParentTop="true"
                 android:layout_toRightOf="@+id/appointmentlist_cancel"
                 android:onClick="doCreateDoctorOrder"
@@ -149,9 +150,38 @@
                 android:layout_height="wrap_content"
                 android:text="Create Report"
                 android:onClick="doCreateReport"
-                android:id="@+id/appointmentdetails_reportbutton" />
+                android:id="@+id/appointmentdetails_createreportbutton"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
 
-        </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:id="@+id/appointmentdetails_viewbuttonslayout"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Doctor Order"
+                android:id="@+id/appointmentdetails_viewdoctororderbutton"
+                android:layout_alignParentTop="true"
+                android:onClick="doViewDoctorOrder" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="View Report"
+                android:onClick="doViewReport"
+                android:id="@+id/appointmentdetails_viewreportbutton"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+
+        </RelativeLayout>
 
     </LinearLayout>
 </RelativeLayout>
