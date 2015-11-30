@@ -60,6 +60,8 @@ public class DoctorOrderController extends AppCompatActivity {
         props.put("symptoms",getValueFromTextView(R.id.doctororder_symptoms));
         props.put("diagnosis",getValueFromTextView(R.id.doctororder_diagnosis));
         props.put("medicine_prescribed",getValueFromTextView(R.id.doctororder_medicalprescribed));
+        props.put("physical_examination",getValueFromTextView(R.id.doctororder_physical_examination));
+        props.put("assessment",getValueFromTextView(R.id.doctororder_assessment));
         return props;
     }
 

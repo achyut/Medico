@@ -132,8 +132,6 @@ public class AppointmentController extends AppCompatActivity {
         props.put("date", getValueFromTextView(R.id.create_appointment_date));
         props.put("chief_complaint", getValueFromTextView(R.id.create_appointment_chiefcomplaint));
         props.put("summary_of_illness", getValueFromTextView(R.id.create_appointment_summaryofillness));
-        props.put("physical_examination", getValueFromTextView(R.id.create_appointment_physicalexamination));
-        props.put("assessment", getValueFromTextView(R.id.create_appointment_assesment));
         return props;
     }
 

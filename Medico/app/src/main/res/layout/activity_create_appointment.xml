@@ -83,38 +83,7 @@
                 android:lines="8"
                 android:minLines="6"
                 android:id="@+id/create_appointment_summaryofillness" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Physical examination"
-                android:id="@+id/textView37"
-                android:layout_below="@+id/textView32"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textMultiLine"
-                android:lines="8"
-                android:minLines="6"
-                android:id="@+id/create_appointment_physicalexamination" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Assesment"
-                android:id="@+id/textView38"
-                android:layout_below="@+id/textView32"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textMultiLine"
-                android:lines="8"
-                android:minLines="6"
-                android:id="@+id/create_appointment_assesment" />
+
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

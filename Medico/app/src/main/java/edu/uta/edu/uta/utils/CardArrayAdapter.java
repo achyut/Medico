@@ -128,8 +128,6 @@ public class CardArrayAdapter  extends ArrayAdapter<AppointmentCard> {
                         bundle.putString("appointment_status",response.getString("appointment_status"));
                         bundle.putString("chief_complaint",response.getString("chief_complaint"));
                         bundle.putString("summary_of_illness",response.getString("summary_of_illness"));
-                        bundle.putString("physical_examination",response.getString("physical_examination"));
-                        bundle.putString("assessment", response.getString("assessment"));
                         Intent intent = new Intent(context, AppointmentDetailsController.class);
                         intent.putExtras(bundle);
                         context.startActivity(intent);
@@ -214,6 +212,7 @@ public class CardArrayAdapter  extends ArrayAdapter<AppointmentCard> {
     }
 
     private void showDeleteSuccessDialog(){
+        pDialog.hide();
         AlertDialog alertDialog = new AlertDialog.Builder(context).create();
         alertDialog.setTitle("Success!!");
         alertDialog.setMessage("Appointment Successfully Deleted.");

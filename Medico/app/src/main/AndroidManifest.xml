@@ -56,7 +56,7 @@
             android:label="Search" >
         </activity>
         <activity
-            android:name=".search_results"
+            android:name=".SearchResultController"
             android:label="Search Results" >
         </activity>
         <activity

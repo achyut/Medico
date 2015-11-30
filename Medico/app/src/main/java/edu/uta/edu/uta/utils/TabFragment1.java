@@ -54,11 +54,8 @@ public class TabFragment1 extends ListFragment {
                     if(!response.getBoolean("error")){
                         ArrayList<AppointmentCard> list = getAppointmentList(response);
                         setListAdapter(new CardArrayAdapter(getActivity(), list));
-                        pDialog.hide();
                     }
-                    else{
-                        pDialog.setMessage(response.getString("message"));
-                    }
+                    pDialog.hide();
                 } catch (JSONException e) {
                     pDialog.setMessage(e.getMessage());
                 }

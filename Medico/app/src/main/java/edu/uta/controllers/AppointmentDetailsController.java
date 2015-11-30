@@ -36,8 +36,6 @@ public class AppointmentDetailsController extends AppCompatActivity {
             setValueToTextView(bundle.getString("appointment_status"),R.id.appointmentdetails_status);
             setValueToTextView(bundle.getString("chief_complaint"),R.id.appointmentdetails_chiefcomplaint);
             setValueToTextView(bundle.getString("summary_of_illness"),R.id.appointmentdetails_summaryofillness);
-            setValueToTextView(bundle.getString("physical_examination"),R.id.appointmentdetails_physicalexamination);
-            setValueToTextView(bundle.getString("assessment"), R.id.appointmentdetails_assessment);
         }
         String usertypr = AppUtils.getUserFromSession(this).getUsertype();
         boolean medicalRecordPage = AppUtils.getViewMedicalRecord(this);

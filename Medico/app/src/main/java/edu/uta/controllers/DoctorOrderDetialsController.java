@@ -54,14 +54,20 @@ public class DoctorOrderDetialsController extends AppCompatActivity {
                     String symptoms = "";
                     String diagnosis = "";
                     String medicine_prescribed = "";
+                    String physical_examination = "";
+                    String assessment = "";
                     if(!response.getBoolean("error")){
                         symptoms = response.getString("symptoms");
                         diagnosis = response.getString("diagnosis");
                         medicine_prescribed = response.getString("medicine_prescribed");
+                        physical_examination = response.getString("physical_examination");
+                        assessment = response.getString("assessment");
                     }
                     setValueToTextView(symptoms,R.id.doctor_orderdetials_symptoms);
                     setValueToTextView(diagnosis,R.id.doctor_orderdetials_diagnosis);
                     setValueToTextView(medicine_prescribed,R.id.doctor_orderdetails_medicineprescribed);
+                    setValueToTextView(physical_examination,R.id.doctor_orderdetials_physicalexamination);
+                    setValueToTextView(assessment,R.id.doctor_orderdetials_assessment);
 
                     pDialog.hide();
                 } catch (JSONException e) {

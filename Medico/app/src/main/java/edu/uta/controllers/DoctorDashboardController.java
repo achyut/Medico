@@ -38,6 +38,7 @@ public class DoctorDashboardController extends AppCompatActivity {
     }
 
     public void showNewMedicalReport(View view) {
+        AppUtils.setViewMedicalRecord(this,false);
         Intent intent = new Intent(this,MedicalReportController.class);
         startActivity(intent);
     }
