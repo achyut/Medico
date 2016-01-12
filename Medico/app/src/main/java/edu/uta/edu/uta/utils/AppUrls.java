@@ -4,7 +4,7 @@ package edu.uta.edu.uta.utils;
  * Created by gaurav on 11/23/15.
  */
 public class AppUrls {
-    final static String BASE_URL = "http://192.168.43.34:8000/";
+    final static String BASE_URL = "http://192.168.254.182:8000/";
    // final static String BASE_URL = "http://f40f13bc.ngrok.io/";
 
 
